@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.NoteNoteDao">
+	<!-- NoteNote的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_NoteNote_Map" type="com.anywhere.note.entity.NoteNote">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="book_id" property="bookId" />
+		<result column="user_id" property="userId" />
+		<result column="content" property="content" />
+		<result column="data_version" property="dataVersion" />
+	</resultMap>
+
+
+</mapper>

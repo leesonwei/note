@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云笔记</title>
+    <link href="/static/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="cloud note">
+        <svg t="1556435348327" class="d-block" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="532" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><defs><style type="text/css"></style></defs><path d="M515.072 841.728l318.464-283.648 23.04-24.576c51.712-53.76 72.192-132.608 53.248-206.336-18.944-73.728-73.728-131.584-144.384-151.04-70.656-19.456-145.92 1.536-197.12 55.808l-24.576 25.6c-7.68 8.192-18.432 12.8-29.696 12.8-11.264 0-22.016-4.608-29.696-12.8l-24.576-25.6c-85.504-89.088-227.84-82.432-304.64 19.968-65.536 87.04-51.712 210.944 23.552 289.28L194.56 558.08l317.952 283.648c0.512 0.512 1.536 0.512 2.56 0z m-1.536 102.4c-10.24 0-19.456-3.584-27.136-10.752l-348.16-310.272-2.048-2.048-24.576-25.6C-1.536 479.744-3.072 289.28 107.52 170.496c110.592-118.272 291.328-121.344 405.504-7.168 0.512 0.512 1.536 0.512 2.048 0C629.76 52.736 807.424 57.344 916.48 174.08c109.568 117.248 109.056 304.64-0.512 421.376l-24.576 25.6c-1.024 1.024-2.048 2.048-3.072 2.56l-347.648 309.76c-7.168 7.168-16.896 10.752-27.136 10.752z" p-id="533" fill="#13227a"></path></svg>
+    </a>
+    <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+            <li class="nav-item">
+                <a  style="color:#cbbde2" class="nav-link " href="/">云笔记</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+
+    </ul>
+    <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/">登录</a>
+    <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/">注册</a>
+</header>
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+            <form class="bd-search d-flex align-items-center">
+                <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+                    <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+                    <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                    <span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;">
+                        <div class="ds-dataset-1"></div>
+                    </span>
+                </span>
+                <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3 collapsed" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                </button>
+            </form>
+
+            <nav class="bd-links">
+                <div class="bd-toc-item">
+                <a class="bd-toc-link" href="#layout" data-toggle="collapse" aria-expanded="false" aria-controls="layout">
+                    Layout
+                </a>
+
+                <div class="collapse" id="layout">
+                    <ul class="nav bd-sidebar"><li>
+                        <a href="/docs/4.0/layout/overview/">
+                            Overview
+                        </a></li><li>
+                        <a href="/docs/4.0/layout/grid/">
+                            Grid
+                        </a></li><li>
+                        <a href="/docs/4.0/layout/media-object/">
+                            Media object
+                        </a></li><li>
+                        <a href="/docs/4.0/layout/utilities-for-layout/">
+                            Utilities for layout
+                        </a></li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+        </div>
+        <main class="col-12 col-md-9 col-xl-10 bd-content" id="main" role="main">
+            <div>title</div>
+            <div><span>作者:</span><span>发表时间:</span></div>
+            <article>文章详情</article>
+        </main>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+
+<!--添加笔记本模态框 begin-->
+
+<!--添加笔记本模态框 end-->
+
+<!--添加文章模态框 begin-->
+
+<!--添加文章模态框 end-->
+</html>

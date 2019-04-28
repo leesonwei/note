@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ActionDao">
+	<!-- ComAction的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
+	<resultMap id="result_ComAction_Map" type="com.anywhere.note.entity.Action">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="value" property="value" />
+	</resultMap>
+
+
+</mapper>

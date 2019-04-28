@@ -1,0 +1,22 @@
+${Ansi.BLUE}
+${Ansi.BLUE}                                       .::::.
+${Ansi.BLUE}                                     .::::::::.
+${Ansi.BLUE}                                     :::::::::::
+${Ansi.BLUE}                                     ':::::::::::..
+${Ansi.BLUE}                                      :::::::::::::::'
+${Ansi.BLUE}                                       ':::::::::::.
+${Ansi.BLUE}                                         .::::::::::::::'
+${Ansi.BLUE}                                       .:::::::::::...
+${Ansi.BLUE}                                      ::::::::::::::''
+${Ansi.BLUE}                          .:::.       '::::::::''::::
+${Ansi.BLUE}                        .::::::::.      ':::::'  '::::
+${Ansi.BLUE}                       .::::':::::::.    :::::    '::::.
+${Ansi.BLUE}                     .:::::' ':::::::::. :::::      ':::.
+${Ansi.BLUE}                   .:::::'     ':::::::::.:::::       '::.
+${Ansi.BLUE}                 .::::''         '::::::::::::::       '::.
+${Ansi.BLUE}                .::''              '::::::::::::         :::...
+${Ansi.BLUE}             ..::::                  ':::::::::'        .:' ''''
+${Ansi.BLUE}          ..''''':'                    ':::::.'
+${Ansi.BLUE}
+${Ansi.RED}          note-application about cloud note :: 1.0.0-SNAPSHOT
+
