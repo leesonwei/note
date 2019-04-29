@@ -29,5 +29,7 @@ public class WebMVCConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/static/");
+        registry.addResourceHandler("/note/**")
+                .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/note/");
     }
 }

@@ -37,7 +37,7 @@ CodeMirror.defineMode("puppet", function () {
     'nagios_hostescalation nagios_hostextinfo nagios_hostgroup nagios_service ' +
     'nagios_servicedependency nagios_serviceescalation nagios_serviceextinfo ' +
     'nagios_servicegroup nagios_timeperiod name notify outiface package proto reject ' +
-    'resources router schedule scheduled_task selboolean selmodule service source ' +
+    'note router schedule scheduled_task selboolean selmodule service source ' +
     'sport ssh_authorized_key sshkey stage state table tidy todest toports tosource ' +
     'user vlan yumrepo zfs zone zpool');
 
@@ -73,7 +73,7 @@ CodeMirror.defineMode("puppet", function () {
     // Matches non-builtin resource declarations
     // (i.e. "apache::vhost {" or "mycustomclasss {" would be matched)
     var resource = stream.match(/(\s+)?[\w:_]+(\s+)?{/, false);
-    // Matches virtual and exported resources (i.e. @@user { ; and the like)
+    // Matches virtual and exported note (i.e. @@user { ; and the like)
     var special_resource = stream.match(/(\s+)?[@]{1,2}[\w:_]+(\s+)?{/, false);
 
     // Finally advance the stream
