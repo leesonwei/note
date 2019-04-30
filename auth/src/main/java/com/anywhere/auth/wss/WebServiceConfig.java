@@ -20,6 +20,8 @@ public class WebServiceConfig {
 
     @Autowired
     private WssService wssService;
+    @Autowired
+    private HelloWebService helloWebService;
 
 
     @Bean(name = Bus.DEFAULT_BUS_ID)
@@ -29,9 +31,16 @@ public class WebServiceConfig {
 
 
     @Bean
-    public Endpoint endpoint() {
+    public Endpoint endpoint1() {
         EndpointImpl endpoint = new EndpointImpl(springBus(), wssService);
         endpoint.publish("/wssService");
+        return endpoint;
+    }
+
+    @Bean
+    public Endpoint endpoint2() {
+        EndpointImpl endpoint = new EndpointImpl(springBus(), helloWebService);
+        endpoint.publish("/helloService");
         return endpoint;
     }
 }

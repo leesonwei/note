@@ -10,7 +10,7 @@ import javax.jws.WebService;
  * @description
  * @date 2019/4/30 14:46
  */
-@WebService(name = "hello", targetNamespace = "http://wss.auth.anywhere.com/",endpointInterface = "com.anywhere.auth.wss.WssService")
+@WebService(name="打招呼", serviceName = "跟连接者打招呼", targetNamespace = "http://wss.auth.anywhere.com/",endpointInterface = "com.anywhere.auth.wss.WssService")
 @Component
 public class BaseWssServiceImpl implements WssService {
     @Override
