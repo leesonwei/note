@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class IndexController {
-    
+
     @GetMapping("note-index")
-    public String noteIndex(){
+    public String noteIndex(String name){
         return "note-index";
     }
 
