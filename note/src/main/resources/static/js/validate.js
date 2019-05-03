@@ -19,18 +19,23 @@
             "url":"请输入正确的url格式",
             "minValueMsg":"最小值为",
             "maxValueMsg":"最大值为",
+            "notpass":"表单验证不通过,无法获取数据",
             "showTips":function(msg){
+                //自定义提示窗口
                 //alert(msg);
             },
             "setErrorStyle":function(msg,el){
+                //自定义错误样式(错误处理)
                 //el.css("border-color","red");
             }
         };
         this.options = $.extend({}, this.defaults, options)
     };
 
+    //定义使用的变量
     let elementValue,elementList = [],pass = true, errMsg = "";
 
+    //获取数据相关方法
     let dataTools = {
         getJson:function(){
             let json = {};
@@ -68,8 +73,10 @@
         },
     };
 
+    //验证相关方法
     let validateTools = {
         validateSingle:function(el,_this){
+            //验证单个输入框
             if (el.attr("type") === "checkbox" || el.attr("type") === "radio") {
                 return;
             }
@@ -81,6 +88,7 @@
             validateTools.isReg(el,_this);
         },
         validateAll:function(_this){
+            //获取所有输入框并验证
             elementList.length = 0;
             let type = _this.$element[0].tagName;
             if (type === "INPUT" || type === "TEXTAREA" || type === "SELECT") {
@@ -98,6 +106,7 @@
             }
         },
         isEmpty:function(el){
+            //判断元素的值是否为空
             elementValue = dataTools.getValue(el);
             if (elementValue === null || elementValue === undefined || elementValue === "") {
                 return true;
@@ -106,6 +115,7 @@
             }
         },
         isRequired:function(el,_this){
+            //不可为空验证
             if (el.attr("required") && validateTools.isEmpty(el)) {
                 pass = false;
                 errMsg = el.attr("name") + _this.options.required;
@@ -113,8 +123,9 @@
             }
         },
         minLength:function(el,_this){
+            //最小长度验证
             if (el.attr("minLength") !== undefined) {
-                elementValue = el.val();
+                elementValue = dataTools.getValue(el);
                 if (!validateTools.isEmpty(elementValue) && elementValue.length < el.attr("min")) {
                     pass = false;
                     errMsg = el.attr("name") + _this.options.min;
@@ -123,8 +134,9 @@
             }
         },
         maxLength:function(el,_this){
+            //最大长度验证
             if (el.attr("maxLength") !== undefined) {
-                elementValue = el.val();
+                elementValue = dataTools.getValue(el);
                 if (elementValue.length < el.attr("max")) {
                     pass = false;
                     errMsg = el.attr("name") + _this.options.max;
@@ -133,6 +145,7 @@
             }
         },
         isEmail:function(el,_this){
+            //邮箱验证
             if (el.attr("type") === "email" || el.data("type") === "email") {
                 const emailReg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
                 if (!emailReg.test(el.val())) {
@@ -143,6 +156,7 @@
             }
         },
         isUrl:function(el,_this){
+            //url验证
             if (el.attr("type") === "url" || el.data("type") === "url") {
                 const urlReg = new RegExp(
                     '^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$');
@@ -154,9 +168,10 @@
             }
         },
         isReg:function(el,_this){
+            //正则表达式验证
             if (el.data("regExp") !== undefined) {
                 const regExp = new RegExp(el.data("regExp"));
-                if (!regExp.test(el.val())) {
+                if (!regExp.test(dataTools.getValue(el))) {
                     pass = false;
                     errMsg = el.attr("name") + _this.options.reg;
                     _this.options.setErrorStyle(_this.errMsg,el);
@@ -166,6 +181,7 @@
     };
 
 
+    //暴露给外部的方法
     Validate.prototype = {
         validate:function(){
             validateTools.validateAll(this);
@@ -173,7 +189,7 @@
         },
         getData: function(type){
             if (!pass) {
-                console.log("表单验证不通过");
+                console.log(this.options.notpass);
                 return;
             }
             if ("string" === type) {
@@ -184,6 +200,7 @@
         }
     };
 
+    //作为jQuery插件使用
     $.fn.validate = function(options) {
         //创建实体
         var validate = new Validate(this, options);

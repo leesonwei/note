@@ -77,8 +77,9 @@
 <script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="/static/js/validate.js"></script>
 <script>
-    var validate = $("#search-form").validate();
+
     $("#search").click(function(){
+        var validate = $("#search-form").validate();
         validate.validate();
         console.log(validate.getData("string"));
     });

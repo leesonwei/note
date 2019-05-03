@@ -64,6 +64,14 @@
                 </div>
             </nav>
         </div>
+        <div class="top-button">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noteModal">
+                添加笔记
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookModal">
+                添加笔记本
+            </button>
+        </div>
         <main class="col-12 col-md-9 col-xl-10 bd-content" id="main" role="main">
             <div>title</div>
             <div><span>作者:</span><span>发表时间:</span></div>
@@ -77,10 +85,46 @@
 </body>
 
 <!--添加笔记本模态框 begin-->
-
+<div class="modal fade" id="bookModal" tabindex="-2" role="dialog" aria-labelledby="bookModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalTitle">添加笔记本</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                添加笔记本
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--添加笔记本模态框 end-->
 
 <!--添加文章模态框 begin-->
+<div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="enoteModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width:100%;height: 100%;max-width: 100%;max-height: 100%;padding:0px;margin:0px;">
+        <div class="modal-content" style="width:100%;height: 100%;max-height: 100%;max-width: 100%;padding:0px;margin:0px;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="enoteModalTitle">添加{0}笔记</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--添加文章模态框 end-->
 </html>
