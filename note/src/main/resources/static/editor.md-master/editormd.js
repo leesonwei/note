@@ -4465,20 +4465,52 @@
      * @returns {String} EventType                   返回事件类型名称
      */
     
+    // editormd.mouseOrTouch = function(mouseEventType, touchEventType) {
+    //     mouseEventType = mouseEventType || "click";
+    //     touchEventType = touchEventType || "touchend";
+    //
+    //     var eventType  = mouseEventType;
+    //
+    //     try {
+    //         document.createEvent("TouchEvent");
+    //         eventType = touchEventType;
+    //     } catch(e) {}
+    //
+    //     return eventType;
+    // };
+
     editormd.mouseOrTouch = function(mouseEventType, touchEventType) {
         mouseEventType = mouseEventType || "click";
         touchEventType = touchEventType || "touchend";
-        
+
         var eventType  = mouseEventType;
 
         try {
             document.createEvent("TouchEvent");
+            // eventType = touchEventType;
+        } catch(e) {
+            console.log(e.toString());
+        }
+        //解决chrome浏览器不绑定工具栏点击事件
+        var userAgentInfo = navigator.userAgent;
+        //  console.log(userAgentInfo);
+        var Agents = new Array("Android", "iPhone",  "Windows Phone", "iPad", "iPod");
+        var flag = false;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
             eventType = touchEventType;
-        } catch(e) {}
-
+        }
+        // console.log(eventType);
         return eventType;
     };
-    
+
+
+
     /**
      * 日期时间的格式化方法
      * Datetime format method

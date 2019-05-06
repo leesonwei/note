@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>云笔记</title>
     <link href="/static/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/editor.md-master/css/editormd.css" />
 </head>
 <body>
 <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -38,7 +39,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                 </button>
             </form>
-
+            <button type="button" class="btn btn-sm btn-primary" style="margin: 10px 0px; width:100%;" data-toggle="modal" data-target="#bookModal">
+                添加笔记本
+            </button>
             <nav class="bd-links">
                 <div class="bd-toc-item">
                 <a class="bd-toc-link" href="#layout" data-toggle="collapse" aria-expanded="false" aria-controls="layout">
@@ -64,25 +67,42 @@
                 </div>
             </nav>
         </div>
-        <div class="top-button">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#noteModal">
-                添加笔记
-            </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bookModal">
-                添加笔记本
-            </button>
-        </div>
+
         <main class="col-12 col-md-9 col-xl-10 bd-content" id="main" role="main">
-            <div>title</div>
-            <div><span>作者:</span><span>发表时间:</span></div>
-            <article>文章详情</article>
+            <div id="article">
+                <div>
+                    <h4 class="clearfix">title<button type="button" id="add-note-btn" class="btn btn-sm btn-primary float-right">
+                        添加笔记
+                    </button></h4>
+                    <hr style="margin-top: 0.5rem;margin-bottom: 0.5rem;"/>
+                </div>
+                <div><span>作者:</span><span>发表时间:</span></div>
+                <article>
+                    <div id="note-content2" style="margin-left: 15px; margin-right: 15px;">
+
+                    </div>
+                </article>
+            </div>
+            <div id="add-note" style="display: none;">
+                <div class="col-sm-12 border-bottom">
+                    <input type="text" class="col-sm-11" style="display: inline-block;width: 100%;padding: .375rem .75rem;padding-left: 0rem;font-size: 1rem;line-height: 1.5;border: 0px;outline:none;color: #495057;font-weight: bold; background-color: #fff;background-clip: padding-box;border-radius: 0rem;" id="note-title" value="" placeholder="文章标题"><button type="button" id="to-article-btn" class="btn btn-sm btn-primary float-right ">返回
+</button>
+                </div>
+                <div class="row" id="markdowm" style="margin-top: 10px;"></div>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4" style="text-align: center">
+                        <button type="button" id="close-add-form" class="btn btn-sm btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" id="save-note" class="btn btn-sm btn-primary">保存</button>
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+            </div>
         </main>
+
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-</body>
 
 <!--添加笔记本模态框 begin-->
 <div class="modal fade" id="bookModal" tabindex="-2" role="dialog" aria-labelledby="bookModalTitle" aria-hidden="true">
@@ -95,7 +115,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                添加笔记本
+                <div class="form-group row">
+                    <label for="book-name" class="col-sm-2 col-form-label">名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="book-name" value="" placeholder="笔记本名称">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
@@ -106,25 +131,38 @@
 </div>
 <!--添加笔记本模态框 end-->
 
-<!--添加文章模态框 begin-->
-<div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="enoteModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="width:100%;height: 100%;max-width: 100%;max-height: 100%;padding:0px;margin:0px;">
-        <div class="modal-content" style="width:100%;height: 100%;max-height: 100%;max-width: 100%;padding:0px;margin:0px;">
-            <div class="modal-header">
-                <h5 class="modal-title" id="enoteModalTitle">添加{0}笔记</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<!--<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>-->
+<script src="/static/editor.md-master/examples/js/jquery.min.js"></script>
+<script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/static/editor.md-master/editormd.js"></script>
+<script>
+    $(function() {
+        var testEditormd;
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--添加文章模态框 end-->
+        $(function() {
+            $("#add-note-btn").click(function(){
+                $("#article").hide();
+                $("#add-note").show();
+                if (testEditormd === undefined) {
+                    $("#markdowm").append("<div id=\"note-content\" style=\"margin-left: 15px; margin-right: 15px;\"></div>");
+                    testEditormd = editormd("note-content", {
+                        width: "100%",
+                        height: 640,
+                        markdown : "",
+                        path : '/static/editor.md-master/lib/'
+                    });
+                }
+            });
+            $("#to-article-btn,#close-add-form").click(function() {
+                $("#article").show();
+                $("#add-note").hide();
+            });
+            $("#save-note").click(function(){
+                alert(testEditormd.getHTML());
+            });
+        });
+    });
+
+</script>
+</body>
 </html>
