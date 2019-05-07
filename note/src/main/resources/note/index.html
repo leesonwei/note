@@ -135,34 +135,6 @@
 <script src="/static/editor.md-master/examples/js/jquery.min.js"></script>
 <script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="/static/editor.md-master/editormd.js"></script>
-<script>
-    $(function() {
-        var testEditormd;
-
-        $(function() {
-            $("#add-note-btn").click(function(){
-                $("#article").hide();
-                $("#add-note").show();
-                if (testEditormd === undefined) {
-                    $("#markdowm").append("<div id=\"note-content\" style=\"margin-left: 15px; margin-right: 15px;\"></div>");
-                    testEditormd = editormd("note-content", {
-                        width: "100%",
-                        height: 640,
-                        markdown : "",
-                        path : '/static/editor.md-master/lib/'
-                    });
-                }
-            });
-            $("#to-article-btn,#close-add-form").click(function() {
-                $("#article").show();
-                $("#add-note").hide();
-            });
-            $("#save-note").click(function(){
-                alert(testEditormd.getHTML());
-            });
-        });
-    });
-
-</script>
+<script src="/static/js/note.js"></script>
 </body>
 </html>
