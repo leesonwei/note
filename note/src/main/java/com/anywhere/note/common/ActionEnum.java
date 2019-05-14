@@ -28,11 +28,29 @@ public enum ActionEnum{
      * 更新
      */
     UPDATE(4, "UPDATE"),
+    /**
+     * 删除
+     */
     DELETE(8, "DELETE"),
+    /**
+     * 查询
+     */
     SELECT(16, "SELECT"),
+    /**
+     * 审核
+     */
     CHECK(32, "CHECK"),
+    /**
+     * 反审核
+     */
     UNCHECK(64, "UNCHECK"),
+    /**
+     * 导入
+     */
     IMPORT(128, "IMPORT"),
+    /**
+     * 导出
+     */
     EXPORT(256, "EXPORT");
 
     ActionEnum(Integer code, String value){

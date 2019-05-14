@@ -17,6 +17,24 @@ $(function() {
                 markdown : "",
                 path : '/static/editor.md-master/lib/',
                 saveHTMLToTextarea: true,
+                toolbarIcons : function() {
+                    return ["undo", "redo", "|", "bold", "hr", "list-ul", "h4", "|", "link", "image", "code",  "datetime", "||", "watch", "fullscreen","","|","save", "cancel"]
+                },
+                toolbarIconTexts : {
+                    save : "保存",
+                    cancel : "取消"
+                },
+
+                // 自定义工具栏按钮的事件处理
+                toolbarHandlers : {
+                    save : function(cm, icon, cursor, selection) {
+                        alert(testEditormd.getHTML());
+                    },
+
+                    cancel : function(cm, icon, cursor, selection) {
+                        showById("#article");
+                    }
+                }
             });
         }
     });
@@ -24,16 +42,14 @@ $(function() {
         $(id).show();
         $(id).siblings().hide();
     }
-    $("#to-article-btn,#close-add-form").click(function() {
-        showById("#article");
-        if ($(this).attr("id") === "close-add-form") {
-            $("#add-note").find("input").val("");
-            testEditormd.editor.remove();
-            testEditormd = undefined;
-        }
-    });
-    $("#save-note").click(function(){
-        alert(testEditormd.getHTML());
-    });
 
 });
+
+function showCode(){
+    let radio = $("input[name='inlineRadioOptions']:checked").val();
+    if (radio === "private") {
+        $("#code").show();
+    } else {
+        $("#code").hide();
+    }
+}

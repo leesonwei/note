@@ -1,15 +1,14 @@
 package com.anywhere.note.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * note_book?Ê^?
+ * note_book?ï¿½^?
  *
  * @author
  *
@@ -18,17 +17,23 @@ import lombok.Data;
 @TableName("note_book")
 public class NoteBook implements Serializable {
 
-    /** ??¥»id */
+    /** ??ï¿½ï¿½id */
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    /** ??¥»¦W? */
+    /** ??ï¿½ï¿½ï¿½W? */
     private String name;
 
-    /** ?Õuª©¥» */
+    /** */
+    private boolean isPublic;
+
+    /** */
+    private String code;
+
+    /** ?ï¿½uï¿½ï¿½ï¿½ï¿½ */
     private Integer dataVersion;
 
-    /** ©Ò?¥Î? */
+    /** ï¿½ï¿½?ï¿½ï¿½? */
     private String userId;
 }
 

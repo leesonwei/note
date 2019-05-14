@@ -11,7 +11,6 @@
 package com.anywhere.note.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -24,9 +23,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping("note-index")
-    public String noteIndex(String name){
-        return "note-index";
-    }
 
 }

@@ -1,15 +1,14 @@
 package com.anywhere.note.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * note_note?Ê^?
+ * note_note?ï¿½^?
  *
  * @author
  *
@@ -24,6 +23,8 @@ public class NoteNote implements Serializable {
 
     /**  */
     private String title;
+
+    private String tags;
 
     /**  */
     private String userId;

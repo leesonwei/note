@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 8.0.15 : Database - note
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -38,6 +39,8 @@ DROP TABLE IF EXISTS `note_book`;
 CREATE TABLE `note_book` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '笔记本id',
   `name` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '笔记本名称',
+  `is_public` int(1) COLLATE utf8_bin NOT NULL DEFAULT "1" COMMENT '是否公开',
+  `private_code` varchar(6) COLLATE utf8_bin  COMMENT '私密钥匙',
   `data_version` int(11) DEFAULT '0' COMMENT '数据版本',
   `user_id` varchar(64) COLLATE utf8_bin DEFAULT NULL COMMENT '所属用户',
   PRIMARY KEY (`id`)
@@ -70,6 +73,7 @@ CREATE TABLE `note_note` (
   `title` varchar(100) COLLATE utf8_bin NOT NULL,
   `user_id` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   `content` blob,
+  `tags` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `data_version` int(11) DEFAULT '0',
   `book_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)

@@ -5,7 +5,21 @@
     <title>云笔记</title>
     <link href="/static/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/editor.md-master/css/editormd.css" />
+    <link rel="stylesheet" href="/static/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.css" />
 </head>
+<style>
+    .bootstrap-tagsinput .tag {
+        margin-right: 2px;
+        color: white;
+        background-color: #3cafff;
+        border-radius: 4px;
+        padding: 0px 5px;
+        line-height: 21px;
+    }
+    .bootstrap-tagsinput {
+        width: 100%;
+    }
+</style>
 <body>
 <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
     <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="cloud note">
@@ -48,20 +62,28 @@
                     Layout
                 </a>
 
-                <div class="collapse" id="layout">
-                    <ul class="nav bd-sidebar"><li>
-                        <a href="/docs/4.0/layout/overview/">
-                            Overview
-                        </a></li><li>
-                        <a href="/docs/4.0/layout/grid/">
-                            Grid
-                        </a></li><li>
-                        <a href="/docs/4.0/layout/media-object/">
-                            Media object
-                        </a></li><li>
-                        <a href="/docs/4.0/layout/utilities-for-layout/">
-                            Utilities for layout
-                        </a></li>
+                <div class="collapse" id="layout" style="padding-left: 15px;">
+                    <ul class="nav bd-sidebar" style="display: block;">
+                        <li>
+                            <a href="/docs/4.0/layout/overview/">
+                                Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/4.0/layout/grid/">
+                                Grid
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/4.0/layout/media-object/">
+                                Media object
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/docs/4.0/layout/utilities-for-layout/">
+                                Utilities for layout
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 </div>
@@ -71,32 +93,31 @@
         <main class="col-12 col-md-9 col-xl-10 bd-content" id="main" role="main">
             <div id="article">
                 <div>
-                    <h4 class="clearfix">title<button type="button" id="add-note-btn" class="btn btn-sm btn-primary float-right">
-                        添加笔记
-                    </button></h4>
+                    <h4 class="clearfix">title
+                        <button style="margin-right: 15px;" type="button" id="delete-note-btn" class="btn btn-sm btn-danger float-right">
+                            删除
+                        </button>
+                        <button style="margin-right: 15px;" type="button" id="update-note-btn" class="btn btn-sm btn-info float-right">
+                            更新
+                        </button>
+                        <button style="margin-right: 15px;" type="button" id="add-note-btn" class="btn btn-sm btn-primary float-right">
+                            添加
+                        </button>
+                    </h4>
                     <hr style="margin-top: 0.5rem;margin-bottom: 0.5rem;"/>
                 </div>
-                <div><span>作者:</span><span>发表时间:</span></div>
+                <div>发表时间:<span class="publishTime"></span></div>
                 <article>
-                    <div id="note-content2" style="margin-left: 15px; margin-right: 15px;">
 
-                    </div>
                 </article>
             </div>
             <div id="add-note" style="display: none;">
-                <div class="col-sm-12 border-bottom">
-                    <input type="text" class="col-sm-11" style="display: inline-block;width: 100%;padding: .375rem .75rem;padding-left: 0rem;font-size: 1rem;line-height: 1.5;border: 0px;outline:none;color: #495057;font-weight: bold; background-color: #fff;background-clip: padding-box;border-radius: 0rem;" id="note-title" value="" placeholder="文章标题"><button type="button" id="to-article-btn" class="btn btn-sm btn-primary float-right ">返回
-</button>
+                <div class="row border-bottom" style="margin:0px 0px;">
+                    <input type="text" style="display: inline-block;width: 100%;padding: .375rem .75rem;padding-left: 0rem;font-size: 1rem;line-height: 1.5;border: 0px;outline:none;color: #495057;font-weight: bold; background-color: #fff;background-clip: padding-box;border-radius: 0rem;" id="note-title" value="" placeholder="文章标题">
                 </div>
                 <div class="row" id="markdowm" style="margin-top: 10px;"></div>
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4" style="text-align: center">
-                        <button type="button" id="close-add-form" class="btn btn-sm btn-secondary" data-dismiss="modal">关闭</button>
-                        <button type="button" id="save-note" class="btn btn-sm btn-primary">保存</button>
-                    </div>
-                    <div class="col-sm-4">
-                    </div>
+                <div id="tags" class="row" style="margin:0px 0px;">
+                    <input type="text" style="width: 100% !important;" class="form-control" id="tag" name="tag" data-role="tagsinput" placeholder="输入标签Enter确认"/>
                 </div>
             </div>
         </main>
@@ -121,6 +142,22 @@
                         <input type="text" class="form-control" id="book-name" value="" placeholder="笔记本名称">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="book-name" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10" onclick="showCode()">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="publicRadio" value="public" checked>
+                            <label class="form-check-label" for="publicRadio">Public</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="privateRadio" value="private">
+                            <label class="form-check-label" for="privateRadio">Private</label>
+                        </div>
+                        <div id="code" style="width: 80px;display: none;border-bottom: 1px solid #cecece;" class="form-check form-check-inline">
+                            <input style="border:none;height: 22px;" type="text" maxlength="6" name="code" id="privatecode" value="" placeholder="code">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
@@ -135,6 +172,7 @@
 <script src="/static/editor.md-master/examples/js/jquery.min.js"></script>
 <script src="/static/bootstrap-4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="/static/editor.md-master/editormd.js"></script>
+<script src="/static/bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js"></script>
 <script src="/static/js/note.js"></script>
 </body>
 </html>
