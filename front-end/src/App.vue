@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <Login></Login>
+    <login-view></login-view>
   </div>
 </template>
+
 <script>
-  import Login from '@/components/Login'
+  import login from '@/components/login'
   export default {
     name: 'App',
-    components: {
-      'Login': Login
-    },
-    data() {
-      return {}
+    components:{
+      "loginView":login
     }
   }
 </script>
+
 <style>
   #app {
     text-align: center;
