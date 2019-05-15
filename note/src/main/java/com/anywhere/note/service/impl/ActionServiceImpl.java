@@ -26,5 +26,4 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ActionServiceImpl extends ServiceImpl<ActionMapper, Action> implements ActionService {
-
 }

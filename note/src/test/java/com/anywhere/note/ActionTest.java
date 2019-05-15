@@ -13,10 +13,13 @@ package com.anywhere.note;
 import com.anywhere.note.common.ActionEnum;
 import com.anywhere.note.entity.Action;
 import com.anywhere.note.service.ActionService;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -35,7 +38,13 @@ public class ActionTest extends NoteApplicationTests {
         Action action = new Action();
         action.setName(ActionEnum.INSERT.getValue());
         action.setValue(ActionEnum.INSERT.getCode());
-        Assert.assertThat(actionService.insert(action) , IsEqual.equalTo(true));
+        Assert.assertThat(actionService.insert(action) , IsEqual.equalTo(false));
+    }
+
+    @Test
+    public void select(){
+        EntityWrapper wrapper = new EntityWrapper<Action>();
+        Assert.assertThat(actionService.selectCount(wrapper) , greaterThanOrEqualTo(0));
     }
 
 }

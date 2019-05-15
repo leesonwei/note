@@ -10,7 +10,16 @@
  */
 package com.anywhere.note.controller;
 
+import com.anywhere.note.common.ActionEnum;
+import com.anywhere.note.entity.Action;
+import com.anywhere.note.service.ActionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -22,6 +31,7 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class IndexController {
+
 
 
 }
