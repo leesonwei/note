@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.service.IService;
 public interface NotebookService extends IService<NoteBook> {
 
     ServerResponse insertNoteBook(NoteBook noteBook);
+
+    ServerResponse updateNoteBook(NoteBook noteBook);
+
+    ServerResponse deleteNoteBook(NoteBook noteBook);
 }

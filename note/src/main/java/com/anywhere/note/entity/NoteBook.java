@@ -28,7 +28,7 @@ public class NoteBook implements Serializable {
     private boolean isPublic;
 
     /** */
-    private String code;
+    private String privateCode;
 
     /** ?�u���� */
     private Integer dataVersion;

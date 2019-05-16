@@ -6,6 +6,7 @@ import com.anywhere.note.entity.Action;
 import com.anywhere.note.service.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -18,11 +19,15 @@ import java.util.List;
  * @date 2019/5/15 15:55
  */
 @RestController
-public class ActionController {
-    @Autowired
-    private ActionService actionService;
+@RequestMapping("/action")
+public class ActionController extends BaseController<ActionService,Action> {
 
-    @PostMapping ("/action/insert")
+    @Autowired
+    public ActionController(ActionService actionService) {
+        super(actionService);
+    }
+
+    @PostMapping ("/insert")
     public ServerResponse insert(){
         Action action;
         List<Action> actions = new ArrayList<>();
@@ -32,7 +37,7 @@ public class ActionController {
             action.setValue(actionEnum.getCode());
             actions.add(action);
         }
-        if (!actionService.insertBatch(actions)) {
+        if (!service.insertBatch(actions)) {
             return ServerResponse.createByError();
         }
         return ServerResponse.createBySuccess();

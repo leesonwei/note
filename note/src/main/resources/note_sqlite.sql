@@ -3,3 +3,4 @@ CREATE TABLE "com_action" (
 	"name"	TEXT NOT NULL,
 	"value"	INTEGER NOT NULL
 );
+

@@ -14,6 +14,10 @@ import java.io.IOException;
 @Slf4j
 public class GenerateGitkeep {
 
+
+    private GenerateGitkeep() {
+    }
+
     /**
      * @author lizong.wei
      * @DESCRIPTION: 生成文件
@@ -31,7 +35,9 @@ public class GenerateGitkeep {
                 subFiles = file.listFiles();
                 if (subFiles.length == 0) {
                     keepFile = new File(file.getPath()+"\\.gitkeep");
-                    keepFile.createNewFile();
+                    if (keepFile.createNewFile()){
+                        log.info("---------------->生成gitkeep文件完成");
+                    }
                 }
                 generatorFile(file.getPath());
             }
@@ -41,7 +47,6 @@ public class GenerateGitkeep {
     public static void generator() {
         try {
             generatorFile(System.getProperty("user.dir"));
-            log.info("---------------->生成gitkeep文件完成");
         } catch (IOException e) {
             log.error("---------------->生成gitkeep文件失败",e);
         }
