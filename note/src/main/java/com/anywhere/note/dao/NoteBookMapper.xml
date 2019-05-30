@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.NoteBookDao">
+<mapper namespace="com.anywhere.note.dao.NoteBookMapper">
 	<!-- NoteBook的resultMap,column是给数据库列起的别名,它对应property类的属性 -->
 	<resultMap id="result_NoteBook_Map" type="com.anywhere.note.entity.NoteBook">
-		<id column="id" property="id" />
+		<id column="book_id" property="bookId" />
 		<result column="name" property="name" />
 		<result column="data_version" property="dataVersion" />
 		<result column="user_id" property="userId" />
 	</resultMap>
+	<resultMap id="result_NoteBookNote_Map" type="com.anywhere.note.entity.NoteBook">
+		<id column="book_id" property="bookId" />
+		<result column="name" property="name" />
+		<result column="data_version" property="dataVersion" />
+		<result column="user_id" property="userId" />
+		<collection property="notes" ofType="com.anywhere.note.entity.NoteNote">
+			<id column="note_id" property="noteId" />
+			<result column="title" property="title" />
+			<result column="book_id" property="bookId" />
+<!--			<result column="user_id" property="userId" />-->
+<!--			<result column="markdown_content" property="markdownContent" />-->
+<!--			<result column="html_content" property="htmlContent" />-->
+			<result column="data_version" property="dataVersion" />
+		</collection>
+	</resultMap>
 
-
+	<select id="selectListWithNote" parameterType="map" resultMap="result_NoteBookNote_Map">
+		select ta.book_id,ta.name name,ta.user_id,ta.data_version,tb.note_id,tb.title,tb.book_id,
+		tb.data_version from note_book ta
+		left join note_note tb on ta.book_id = tb.book_id
+		where ta.user_id = #{userId}
+	</select>
 </mapper>

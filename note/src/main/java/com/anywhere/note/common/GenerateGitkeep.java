@@ -35,7 +35,7 @@ public class GenerateGitkeep {
                 subFiles = file.listFiles();
                 if (subFiles.length == 0) {
                     keepFile = new File(file.getPath()+"\\.gitkeep");
-                    if (keepFile.createNewFile()){
+                    if(keepFile.createNewFile()){
                         log.info("---------------->生成gitkeep文件完成");
                     }
                 }

@@ -38,7 +38,7 @@ public class NoteNoteServiceImpl extends ServiceImpl<NoteNoteMapper, NoteNote> i
         } else {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ERROR.getCode(),ResponseCode.ERROR.getDesc());
         }
-        return ServerResponse.createBySuccess();
+        return ServerResponse.createBySuccess(noteNote);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -51,7 +51,7 @@ public class NoteNoteServiceImpl extends ServiceImpl<NoteNoteMapper, NoteNote> i
         } else {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ERROR.getCode(),ResponseCode.ERROR.getDesc());
         }
-        return ServerResponse.createBySuccess();
+        return ServerResponse.createBySuccess(noteNote);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -64,12 +64,12 @@ public class NoteNoteServiceImpl extends ServiceImpl<NoteNoteMapper, NoteNote> i
         } else {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.ERROR.getCode(),ResponseCode.ERROR.getDesc());
         }
-        return ServerResponse.createBySuccess();
+        return ServerResponse.createBySuccess(noteNote);
     }
 
     private EntityWrapper<NoteNote> getUpdateDeleteWrapper(NoteNote noteNote){
         EntityWrapper<NoteNote> wrapper = new EntityWrapper<>();
-        wrapper.eq("id",noteNote.getId());
+        wrapper.eq("id",noteNote.getNoteId());
         wrapper.eq("user_id",noteNote.getUserId());
         wrapper.eq("data_version",noteNote.getDataVersion());
         return wrapper;

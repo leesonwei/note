@@ -5,6 +5,7 @@ import com.anywhere.note.entity.NoteNote;
 import com.anywhere.note.service.NoteNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,17 +24,17 @@ public class NoteNoteController extends BaseController<NoteNoteService, NoteNote
     }
 
     @PostMapping("/insert")
-    public ServerResponse insert(NoteNote noteNote){
+    public ServerResponse insert(@RequestBody NoteNote noteNote){
         return service.insertNoteNote(noteNote);
     }
 
     @PostMapping("/update")
-    public ServerResponse update(NoteNote noteNote){
+    public ServerResponse update(@RequestBody NoteNote noteNote){
         return service.updateNoteNote(noteNote);
     }
 
     @PostMapping("/delete")
-    public ServerResponse delete(NoteNote noteNote){
+    public ServerResponse delete(@RequestBody NoteNote noteNote){
         return service.deleteNoteNote(noteNote);
     }
 }

@@ -4,6 +4,8 @@ import com.anywhere.note.common.ServerResponse;
 import com.anywhere.note.entity.NoteBook;
 import com.baomidou.mybatisplus.service.IService;
 
+import java.util.List;
+
 /**
  * @author LIZONG.WEI
  * @version V1.0
@@ -17,4 +19,6 @@ public interface NotebookService extends IService<NoteBook> {
     ServerResponse updateNoteBook(NoteBook noteBook);
 
     ServerResponse deleteNoteBook(NoteBook noteBook);
+
+    List<NoteBook> selectListWithNote(NoteBook noteBook);
 }

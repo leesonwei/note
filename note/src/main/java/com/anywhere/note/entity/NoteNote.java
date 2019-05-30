@@ -19,7 +19,7 @@ public class NoteNote implements Serializable {
 
     /**  */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Integer noteId;
 
     /**  */
     private String title;
@@ -30,10 +30,13 @@ public class NoteNote implements Serializable {
     private String userId;
 
     /**  */
-    private String content;
+    private String markdownContent;
 
     /**  */
-    private Integer dataVersion;
+    private String htmlContent;
+
+    /**  */
+    private Integer dataVersion = 0;
 
     /**  */
     private Integer bookId;

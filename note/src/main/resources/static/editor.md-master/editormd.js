@@ -4489,7 +4489,7 @@
             document.createEvent("TouchEvent");
             // eventType = touchEventType;
         } catch(e) {
-            console.log(e.toString());
+            // console.log(e.toString());
         }
         //解决chrome浏览器不绑定工具栏点击事件
         var userAgentInfo = navigator.userAgent;

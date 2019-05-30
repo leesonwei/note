@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author LIZONG.WEI
@@ -67,9 +70,20 @@ public class NoteBookServiceImpl extends ServiceImpl<NoteBookMapper, NoteBook> i
         return ServerResponse.createBySuccess();
     }
 
+    @Override
+    public List<NoteBook> selectListWithNote(NoteBook noteBook) {
+        return baseMapper.selectListWithNote(getSelectListWrapper(noteBook));
+    }
+
+    protected Map<String,String> getSelectListWrapper(NoteBook noteBook){
+        Map<String,String> wrapper = new HashMap<>();
+        wrapper.put("userId",noteBook.getUserId());
+        return wrapper;
+    }
+
     private EntityWrapper<NoteBook> getUpdateDeleteWrapper(NoteBook noteBook){
         EntityWrapper<NoteBook> wrapper = new EntityWrapper<>();
-        wrapper.eq("id",noteBook.getId());
+        wrapper.eq("id",noteBook.getBookId());
         wrapper.eq("user_id",noteBook.getUserId());
         wrapper.eq("data_version",noteBook.getDataVersion());
         return wrapper;
